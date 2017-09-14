@@ -1,4 +1,4 @@
-linebot
+linebot==1.5.0
 click==6.7
 Flask==0.12
 Flask-SQLAlchemy==2.1
