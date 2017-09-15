@@ -1,3 +1,6 @@
+import request
+import res
+from bs4 import BeautifulSoup
 from flask import Flask, request, abort
 
 from linebot import (
@@ -32,21 +35,6 @@ def callback():
         abort(400)
 
     return 'OK'
-
-
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text))
-    if enent.message.text == 'eyny':
-	content=movie()
-	line_bot_api.reply_message(
-	    event.reply_token,
-            TextSendMessage(text=content))
-        return 0
-
-
 def movie():
     target_url = 'http://www.eyny.com/forum-205-1.html'
     rs=requests.session()
@@ -63,5 +51,19 @@ def movie():
 
 
 
+
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text))
+    if enent.message.text == 'eyny':
+	content=movie()
+	line_bot_api.reply_message(
+	    event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+
+
 if __name__ == "__main__":
-    app.run(i)
+    app.run()
