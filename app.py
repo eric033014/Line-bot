@@ -14,9 +14,9 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
-import sys  
-reload(sys)  
-sys.setdefaultencoding('utf-8')
+#import sys  
+#reload(sys)  
+#sys.setdefaultencoding('utf-8')
 app = Flask(__name__)
 
 line_bot_api = LineBotApi('qPVeCIsgGmFCi5mkRuWwTwAm0cvDzIEyZrceVtz9Gl5/XPPOHoaeh8KusjGNI01/GPW8UEuSwHJ318smi/06v9Ib1nHBWoG5W128O81Y3UseKpqLpclp9V3viwJmmfEfrEbrvYAXIDatEVKzbr5lHwdB04t89/1O/w1cDnyilFU=')
@@ -40,6 +40,22 @@ def callback():
 
     return 'OK'
 
+def crawer():
+    target_url = 'http://www.eyny.com/forum-205-1.html'
+    print('start parinf')
+    rs=requests.get(target_url)
+    #print(rs.text)
+    soup=BeautifulSoup(rs.text,'html.parser')
+    content=''
+    for i in soup.select('.bm_c tbody .xst'):
+        title=i.text.encode('utf-8')
+        #print(i.text)
+        if '11379780-1-3' in i['href']:
+            continue
+        link = 'http://ww.eyny.com/'+i['href']
+        data = '{}\n{}\n\n'.format(title,link)
+        content+=data
+    print(content)
 
 
 
@@ -68,7 +84,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Hello Eric"))
-        content = eyny_movie()
+        content = crawer()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
