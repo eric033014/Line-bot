@@ -87,7 +87,7 @@ def handle_message(event):
         content = crawer()
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=content))
+            TextSendMessage(text=content.text))
         return 0
     line_bot_api.reply_message(
         event.reply_token,
