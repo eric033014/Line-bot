@@ -37,19 +37,6 @@ def callback():
         abort(400)
 
     return 'OK'
-#def movie():
-#    target_url = 'http://www.eyny.com/forum-205-1.html'
- #   rs=requests.session()
-  #  res=rs.get(target_url,verify=False)
-   # soup=BeautifulSoup(res.text,'html.parser')
- #   content=''
- #   for title in soup.select('.bm_c tbody .xst'):
-#	if pattern_mega(title.text):
-#	    titletext=title.text
-#	    link='http://www.eyny/com/'+title['href']
-#	    data='{}\n{}\n\n'.format(titletext,link)
-#	    content += data
- #   return content
 
 
 
@@ -76,7 +63,9 @@ def eyny_movie():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "eric":
-        TextSendMessage(text="Hello Eric")
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Hello Eric"))
         content = eyny_movie()
         line_bot_api.reply_message(
             event.reply_token,
