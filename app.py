@@ -14,7 +14,9 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
-
+import sys  
+reload(sys)  
+sys.setdefaultencoding('utf-8')
 app = Flask(__name__)
 
 line_bot_api = LineBotApi('qPVeCIsgGmFCi5mkRuWwTwAm0cvDzIEyZrceVtz9Gl5/XPPOHoaeh8KusjGNI01/GPW8UEuSwHJ318smi/06v9Ib1nHBWoG5W128O81Y3UseKpqLpclp9V3viwJmmfEfrEbrvYAXIDatEVKzbr5lHwdB04t89/1O/w1cDnyilFU=')
