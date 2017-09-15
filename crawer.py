@@ -24,4 +24,6 @@ def crawer():
 
 
 if __name__=="__main__":
-    print(crawer())
+    content='FRGEG'
+    content=crawer()
+    print(content)

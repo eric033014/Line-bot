@@ -80,9 +80,10 @@ def crawer():
 
 
 @handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
+def handle_messag(event):
     if event.message.text == "eric":
         content = "XXXXXXXXXXXXXXXXXXXXXXXXX"
+        content = crawer()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
