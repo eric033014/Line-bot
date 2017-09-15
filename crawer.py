@@ -7,8 +7,8 @@ from flask import Flask,request,abort
 #sys.setdefaultencoding('utf-8')
 def crawer():
     target_url = 'http://www.eyny.com/forum-205-1.html'
-    print('start parinf')
     rs=requests.get(target_url)
+    rs.encoding='utf-8'
     #print(rs.text)
     soup=BeautifulSoup(rs.text,'html.parser')
     content=''
@@ -20,7 +20,8 @@ def crawer():
         link = 'http://ww.eyny.com/'+i['href']
         data = '{}\n{}\n\n'.format(title,link)
         content+=data
-    print(content)
-    print(type(content))
+    return content
+
+
 if __name__=="__main__":
-    crawer()
+    print(crawer())

@@ -48,7 +48,7 @@ def crawer():
     soup=BeautifulSoup(rs.text,'html.parser')
     content=''
     for i in soup.select('.bm_c tbody .xst'):
-        title=i.text
+        title=i.text.encode('utf-8')
         #print(i.text)
         if '11379780-1-3' in i['href']:
             continue
