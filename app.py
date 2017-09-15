@@ -42,10 +42,10 @@ def movie():
     soup=BeautifulSoup(res.text,'html.parser')
     content=''
     for title in soup.select('.bm_c tbody .xst'):
-	if pattern_mega(title.text)
+	if pattern_mega(title.text):
 	    titletext=title.text
 `	    link='http://www.eyny/com/'+title['href']
-	    data='{}\n{}\n\n'.format(title,link)
+	    data='{}\n{}\n\n'.format(titletext,link)
 	    content += data
     return content
 
