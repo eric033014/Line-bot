@@ -59,7 +59,7 @@ def crawer():
 
 
 
-def eyny_movie():
+"""def eyny_movie():
     target_url = 'http://www.eyny.com/forum-205-1.html'
     print('Start parsing eynyMovie....')
     rs = requests.session()
@@ -76,13 +76,13 @@ def eyny_movie():
             data = '{}\n{}\n\n'.format(title, link)
             content += data
     return content
-
+"""
 
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "eric":
-        content = eyny_movie()
+        content = crawer()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
