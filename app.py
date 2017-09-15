@@ -42,13 +42,13 @@ def callback():
 
 def crawer():
     target_url = 'http://www.eyny.com/forum-205-1.html'
-    print('start parinf')
     rs=requests.get(target_url)
+    rs.encoding='utf-8'
     #print(rs.text)
     soup=BeautifulSoup(rs.text,'html.parser')
     content=''
     for i in soup.select('.bm_c tbody .xst'):
-        title=i.text.encode('utf-8')
+        title=i.text
         #print(i.text)
         if '11379780-1-3' in i['href']:
             continue
@@ -64,8 +64,9 @@ def eyny_movie():
     print('Start parsing eynyMovie....')
     rs = requests.session()
     res = rs.get(target_url, verify=False)
+    res.encoding= 'utf-8'
     soup = BeautifulSoup(res.text, 'html.parser')
-    content = ''
+    content = ""
     for titleURL in soup.select('.bm_c tbody .xst'):
         if pattern_mega(titleURL.text):
             title = titleURL.text
@@ -81,10 +82,7 @@ def eyny_movie():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "eric":
-        #line_bot_api.reply_message(
-        #    event.reply_token,
-        #    TextSendMessage(text="Hello Eric"))
-        content = crawer()
+        content = eyny_movie()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
@@ -92,7 +90,7 @@ def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text))
-
+    return 0
 
 if __name__ == "__main__":
     app.run()
