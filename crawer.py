@@ -21,5 +21,6 @@ def crawer():
         data = '{}\n{}\n\n'.format(title,link)
         content+=data
     print(content)
+    print(type(content))
 if __name__=="__main__":
     crawer()
