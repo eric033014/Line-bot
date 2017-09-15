@@ -55,7 +55,7 @@ def crawer():
         link = 'http://ww.eyny.com/'+i['href']
         data = '{}\n{}\n\n'.format(title,link)
         content+=data
-    print(content)
+    return content
 
 
 
