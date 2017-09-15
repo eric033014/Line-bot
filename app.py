@@ -75,15 +75,15 @@ def eyny_movie():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text))
     if event.message.text == "eyny":
         content = eyny_movie()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text))
 
 
 if __name__ == "__main__":
