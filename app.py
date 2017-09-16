@@ -114,16 +114,16 @@ def beauty():
     res=rs.get(target_url,verify=False)
     soup=BeautifulSoup(res.text,'html.parser')
     content=''
-    for i in soup.select('.r-ent .title'):
+    for i in soup.find_all(class_="r-ent"):
         #title=i.text.encode('utf-8')
         #print(i.text)
-        if pattern_mega(i.text):
-            title = i.text
-            if i.find('a'):
-                link = 'https://www.ptt.cc'+i.find('a')['href']
-                data = '{}\n{}\n\n'.format(title,link)
-                content+=data
-                print(data)
+        if i.find('a'):
+            title=r_ent.find(class_="title").text.strip()
+            link = 'https://www.ptt.cc'+i.find('a')['href']
+
+            data = '{}\n{}\n\n'.format(title,link)
+            content+=data
+            print(data)
     print(content)
     return content
 
@@ -142,7 +142,7 @@ def ptt_beauty():
         index_list.append(page_url)
 
     # 抓取 文章標題 網址 推文數
-"""    while index_list:
+    while index_list:
         index = index_list.pop(0)
         res = rs.get(index, verify=False)
         # 如網頁忙線中,則先將網頁加入 index_list 並休息1秒後再連接
@@ -154,7 +154,7 @@ def ptt_beauty():
             article_list = craw_page(res, push_rate)
             # print u'OK_URL:', index
             # time.sleep(0.05)
-"""
+
     content = ''
     for article in article_list:
         data = '[{} push] {}\n{}\n\n'.format(article.get('title', None), article.get('title', None),
@@ -179,6 +179,13 @@ def handle_messag(event):
             event.reply_token,
             TextSendMessage(text=content))
         return 0
+    if event.message.text == "beauty1":
+        content=beauty()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+
     else:
         line_bot_api.reply_message(
             event.reply_token,
