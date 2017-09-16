@@ -35,7 +35,7 @@ def beauty():
         #if '11379780-1-3' in i['href']:
         #    continue
             link = 'https://www.ptt.cc'+i.find('a')['href']
-            data = '{}\n{}\n\n'.format(i.get('title'),i.get('url'))
+            data = '{}\n{}\n\n'.format(title,link)
             content+=data
     return content
 
