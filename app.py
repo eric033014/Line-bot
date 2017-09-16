@@ -1,3 +1,4 @@
+import random
 import requests
 import re
 import random
@@ -21,6 +22,9 @@ app = Flask(__name__)
 
 line_bot_api = LineBotApi('PebyWZbRffy3piwRInGduhL9BMkq/AjXB4SB7GVjInwdCKxmAg80VIjFHp4pgvrOGPW8UEuSwHJ318smi/06v9Ib1nHBWoG5W128O81Y3UsmuHjlPhdNPoxCtBNe6dW9b1j3p+9KutaXg1dIWep9UQdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('1023d2bc1b68157deb377644a1067c86')
+
+bang=['https://truth.bahamut.com.tw/s01/201708/61df0d65bccde69c70d5f9d0240c74be.JPG','https://truth.bahamut.com.tw/s01/201708/a94cb92b9f6d7c76ed30c987d5cafe6b.JPG','https://truth.bahamut.com.tw/s01/201708/5c838041e5b423c1d6d29f5db93a8ae4.JPG','https://scontent.ftpe5-1.fna.fbcdn.net/v/t1.0-9/21270956_342990686139577_1216760829687952297_n.jpg?oh=e267eef4a3ea2f69247a32bed94976d1&oe=5A170A9D','https://scontent.ftpe5-1.fna.fbcdn.net/v/t1.0-9/21231615_506045473083847_177753384360284829_n.jpg?oh=2558a1f409bb2aec85dbdb58c5a5398f&oe=5A50C4F7','https://scontent.ftpe5-1.fna.fbcdn.net/v/t1.0-9/21151549_511834835832124_7309600245286435106_n.jpg?oh=290e072b64c91bd60098c1d943bee62a&oe=5A137812','https://scontent.ftpe5-1.fna.fbcdn.net/v/t1.0-9/20841014_336605396788043_2673432232091169936_n.jpg?oh=1a977e9202f79aceea9495b0319f54d8&oe=5A5B2768']
+
 
 
 @app.route("/callback", methods=['POST'])
@@ -167,9 +171,10 @@ def ptt_beauty():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_messag(event):
     if event.message.text=="bang":
+        num=random.randint(0,len(bang))
         image_message=ImageSendMessage(
-            original_content_url='https://img.tw.observer/images/keSSW7x.jpg',
-            preview_image_url='https://img.tw.observer/images/keSSW7x.jpg'
+            original_content_url=bang[num],
+            preview_image_url=bang[num]
         )
         line_bot_api.reply_message(
             event.reply_token, image_message)
