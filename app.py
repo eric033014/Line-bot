@@ -97,7 +97,7 @@ def handle_messag(event):
             event.reply_token,
             TextSendMessage(text=content))
         return 0
-    elif event.message.text == "beauty":
+    if event.message.text == "beauty":
         content=beauty()
         line_bot_api.reply_message(
             event.reply_token,

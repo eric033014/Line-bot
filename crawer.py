@@ -31,11 +31,11 @@ def beauty():
     for i in soup.select('.r-ent .title'):
         title=i.text.encode('utf-8')
         if i.find('a'):
-            print(i.text)
+            #print(i.text)
         #if '11379780-1-3' in i['href']:
         #    continue
             link = 'https://www.ptt.cc'+i.find('a')['href']
-            data = '{}\n{}\n\n'.format(title,link)
+            data = '{}\n{}\n\n'.format(i.get('title'),i.get('url'))
             content+=data
     return content
 
