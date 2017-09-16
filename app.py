@@ -168,7 +168,7 @@ def ptt_beauty():
 def handle_messag(event):
     if event.message.text=="bang":
         image_message=ImageSendMessage(
-            original_content_url='https://img.tw.observer/images/keSSW7x.jpg'
+            original_content_url='https://img.tw.observer/images/keSSW7x.jpg',
             preview_image_url='https://img.tw.observer/images/keSSW7x.jpg'
         )
         line_bot_api.reply_message(
