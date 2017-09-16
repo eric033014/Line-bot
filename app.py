@@ -198,6 +198,10 @@ def handle_messag(event):
             event.reply_token,
             TextSendMessage(text=content))
         return 0
+    if "庭宇" in event.message.text:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="???"))
 
     else:
         line_bot_api.reply_message(
