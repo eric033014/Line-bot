@@ -173,7 +173,7 @@ def handle_messag(event):
             TextSendMessage(text=content))
         return 0
     if event.message.text == "beauty":
-        content=ppt_beauty()
+        content=ptt_beauty()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
