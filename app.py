@@ -72,6 +72,7 @@ def eyny_movie():
 def beauty():
     target_url = 'https://www.ptt.cc/bbs/Beauty/index.html'
     print("parsing beauty")
+    requests.packages.urllib3.disable_warnings()
     rs=requests.session()
     res=rs.get(target_url,verify=False)
     soup=BeautifulSoup(res.text,'html.parser')
