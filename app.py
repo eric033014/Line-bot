@@ -202,7 +202,7 @@ def handle_messag(event):
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=event.message.text))
+            TextSendMessage(text="媽的徐胤桓智障"))
         return 0
 
 if __name__ == "__main__":
