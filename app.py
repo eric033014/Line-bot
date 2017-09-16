@@ -71,7 +71,7 @@ def eyny_movie():
 
 def beauty():
     target_url = 'https://www.ptt.cc/bbs/Beauty/index.html'
-    rs=requests.get(target_url)
+    rs=requests.session()
     res=rs.get(target_url,verify=False)
     soup=BeautifulSoup(rs.text,'html.parser')
     content=''
