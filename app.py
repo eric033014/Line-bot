@@ -118,7 +118,7 @@ def beauty():
         #title=i.text.encode('utf-8')
         #print(i.text)
         if i.find('a'):
-            title=.find(class_="title").text.strip()
+            title=i.find(class_="title").text.strip()
             link = 'https://www.ptt.cc'+i.find('a')['href']
 
             data = '{}\n{}\n\n'.format(title,link)
