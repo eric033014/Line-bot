@@ -19,7 +19,7 @@ from linebot.models import (
 #sys.setdefaultencoding('utf-8')
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('qPVeCIsgGmFCi5mkRuWwTwAm0cvDzIEyZrceVtz9Gl5/XPPOHoaeh8KusjGNI01/GPW8UEuSwHJ318smi/06v9Ib1nHBWoG5W128O81Y3UseKpqLpclp9V3viwJmmfEfrEbrvYAXIDatEVKzbr5lHwdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('PebyWZbRffy3piwRInGduhL9BMkq/AjXB4SB7GVjInwdCKxmAg80VIjFHp4pgvrOGPW8UEuSwHJ318smi/06v9Ib1nHBWoG5W128O81Y3UsmuHjlPhdNPoxCtBNe6dW9b1j3p+9KutaXg1dIWep9UQdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('1023d2bc1b68157deb377644a1067c86')
 
 
