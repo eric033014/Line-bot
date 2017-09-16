@@ -73,7 +73,7 @@ def beauty():
     target_url = 'https://www.ptt.cc/bbs/Beauty/index.html'
     rs=requests.get(target_url)
     res=rs.get(target_url,verify=False)
-	soup=BeautifulSoup(rs.text,'html.parser')
+    soup=BeautifulSoup(rs.text,'html.parser')
     content=''
     for i in soup.select('.r-ent .title'):
         #title=i.text.encode('utf-8')
