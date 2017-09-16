@@ -166,6 +166,14 @@ def ptt_beauty():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_messag(event):
+    if event.message.text=="bang":
+        image_message=ImageSendMessage(
+            original_content_url='https://img.tw.observer/images/keSSW7x.jpg'
+            preview_image_url='https://img.tw.observer/images/keSSW7x.jpg'
+        )
+        line_bot_api.reply_message(
+            event.reply_token, image_message)
+        return 0
     if event.message.text == "eric":
         content = "XXXXXXXXXXXXXXXXXXXXXXXXX"
         content = eyny_movie()
