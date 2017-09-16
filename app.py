@@ -79,8 +79,8 @@ def beauty():
     for i in soup.select('.r-ent .title'):
         title=i.text.encode('utf-8')
         #print(i.text)
-        if pattern_mega(titleURL.text):
-            title = titleURL.text
+        if pattern_mega(i.text):
+            title = i.text
             if i.find('a'):
                 link = 'https://www.ptt.cc'+i.find('a')['href']
                 data = '{}\n{}\n\n'.format(title,link)
