@@ -85,6 +85,7 @@ def beauty():
                 link = 'https://www.ptt.cc'+i.find('a')['href']
                 data = '{}\n{}\n\n'.format(title,link)
                 content+=data
+    print(content)
     return content
 
 
