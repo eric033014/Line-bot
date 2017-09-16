@@ -142,7 +142,7 @@ def ptt_beauty():
         index_list.append(page_url)
 
     # 抓取 文章標題 網址 推文數
-    while index_list:
+"""    while index_list:
         index = index_list.pop(0)
         res = rs.get(index, verify=False)
         # 如網頁忙線中,則先將網頁加入 index_list 並休息1秒後再連接
@@ -154,9 +154,10 @@ def ptt_beauty():
             article_list = craw_page(res, push_rate)
             # print u'OK_URL:', index
             # time.sleep(0.05)
+"""
     content = ''
     for article in article_list:
-        data = '[{} push] {}\n{}\n\n'.format(article.get('rate', None), article.get('title', None),
+        data = '[{} push] {}\n{}\n\n'.format(article.get('title', None), article.get('title', None),
                                              article.get('url', None))
         content += data
     return content
