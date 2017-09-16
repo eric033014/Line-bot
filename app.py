@@ -69,21 +69,20 @@ def eyny_movie():
 
 
 
-def crawer():
-    target_url = 'http://www.eyny.com/forum-205-1.html'
+def beauty():
+    target_url = 'https://www.ptt.cc/bbs/Beauty/index.html'
     rs=requests.get(target_url)
     rs.encoding='utf-8'
     #print(rs.text)
     soup=BeautifulSoup(rs.text,'html.parser')
     content=''
-    for i in soup.select('.bm_c tbody .xst'):
+    for i in soup.select('.r-ent .title'):
         title=i.text.encode('utf-8')
         #print(i.text)
-        if '11379780-1-3' in i['href']:
-            continue
-        link = 'http://ww.eyny.com/'+i['href']
-        data = '{}\n{}\n\n'.format(title,link)
-        content+=data
+        if i.find('a'):
+            link = 'https://www.ptt.cc'+i.find('a')['href']
+            data = '{}\n{}\n\n'.format(title,link)
+            content+=data
     return content
 
 
@@ -113,6 +112,12 @@ def handle_messag(event):
     if event.message.text == "eric":
         content = "XXXXXXXXXXXXXXXXXXXXXXXXX"
         content = eyny_movie()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+    else if event.message.text == "beauty":
+        content=beauty()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
