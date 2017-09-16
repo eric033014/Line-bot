@@ -72,12 +72,11 @@ def eyny_movie():
 def beauty():
     target_url = 'https://www.ptt.cc/bbs/Beauty/index.html'
     rs=requests.get(target_url)
-    rs.encoding='utf-8'
-    #print(rs.text)
-    soup=BeautifulSoup(rs.text,'html.parser')
+    res=rs.get(target_url,verify=False)
+	soup=BeautifulSoup(rs.text,'html.parser')
     content=''
     for i in soup.select('.r-ent .title'):
-        title=i.text.encode('utf-8')
+        #title=i.text.encode('utf-8')
         #print(i.text)
         if pattern_mega(i.text):
             title = i.text
