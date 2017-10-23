@@ -4,10 +4,10 @@
 #!/usr/bin/python
 #encoding:utf-8
 
-import urllib,urllib2
+import urllib
 from bs4 import BeautifulSoup
 url = "http://www.thsrc.com.tw/tw/TimeTable/SearchResult"
-request = urllib2.Request(url) 
+request = urllib.request.Request(url) 
 request.add_header("User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36")
 
 form_data = {
@@ -20,8 +20,8 @@ form_data = {
     "EarlyOrLater":""
 }
 print(form_data["StartStation"])
-form_data = urllib.urlencode(form_data)
-response = urllib2.urlopen(request,data=form_data)  
+form_data = urllib.parse.urlencode(form_data).encode("utf-8")
+response = urllib.request.urlopen(request,data=form_data)  
 html = response.read()
 soup= BeautifulSoup(html, 'html.parser')
 all_=[]

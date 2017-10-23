@@ -3,7 +3,7 @@ import requests
 import re
 import random
 import configparser
-import urllib,urllib2
+import urllib
 from bs4 import BeautifulSoup
 from flask import Flask, request, abort
 
@@ -139,7 +139,7 @@ def beauty():
 def tran():
     target_url = 'http://www.thsrc.com.tw/tw/TimeTable/SearchResult'
     print("highway station ing ")
-    request= urllib2.Request(url)
+    request= urllib.request.Request(url)
     request.add_header("User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36")
 
     form_data = {
@@ -152,14 +152,14 @@ def tran():
         "EarlyOrLater":""
     }
     print(form_data["StartStation"])
-    form_data = urllib.urlencode(form_data)
-    response = urllib2.urlopen(request,data=form_data)  
+    form_data = urllib.urlencode(form_data).encode("utf-8")
+    response = urllib.request.urlopen(request,data=form_data)  
     html = response.read()
     soup= BeautifulSoup(html, 'html.parser')
     content=''
     for i in soup.find_all(class_="touch_table"):
         t=u"車次"
-        trainnumber=t+i.find(class_="column1").text
+        trainnumber=t+i.find(colass_="column1").text
         print(trainnumber)
    # all_.append(trainnumber)
         start=u"出發時間"+i.find(class_="column3").text
