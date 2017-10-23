@@ -44,6 +44,7 @@ def callback():
 
     return 'OK'
 
+
 def pattern_mega(text):
     patterns = [
         'mega', 'mg', 'mu', 'ＭＥＧＡ', 'ＭＥ', 'ＭＵ',
@@ -52,6 +53,8 @@ def pattern_mega(text):
     for pattern in patterns:
         if re.search(pattern, text, re.IGNORECASE):
             return True
+
+
 def get_page_number(content):
     start_index = content.find('index')
     end_index = content.find('.html')
@@ -188,9 +191,9 @@ def tran():
             content+=data
             print(data)
     print(content)
-"""
     return content
 
+"""
 
 def ptt_beauty():
     rs = requests.session()
