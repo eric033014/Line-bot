@@ -225,7 +225,7 @@ def handle_messag(event):
         return 0
     if "高鐵" in event.message.text :
         t=event.message.text
-        t=t.split().strip()
+        t=t.strip().split()
         content=tran(t[1],t[2])
         line_bot_api.reply_message(
             event.reply_token,
