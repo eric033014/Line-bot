@@ -227,8 +227,6 @@ def handle_messag(event):
         content = "XXXXXXXXXXXXXXXXXXXXXXXXX"
         handle_messag(event)
 
-        @handler.add(MessageEvent, message=TextMessage)
-        content="OXOX"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
