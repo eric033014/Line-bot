@@ -131,6 +131,7 @@ def beauty():
     print(content)
     return content
 
+"""
 def tran():
     target_url = 'http://www.thsrc.com.tw/tw/TimeTable/SearchResult'
     print("highway station ing ")
@@ -167,8 +168,12 @@ def tran():
         content+=data
         #all_.append({u"車次":trainnumber,u"起站":start,u"終點":arrive})
     #print(all_)
+
+
+
+
  
-  """  rs=requests.session()
+    rs=requests.session()
     res=rs.get(target_url,verify=False)
     soup=BeautifulSoup(res.text,'html.parser')
     content=''
@@ -248,12 +253,14 @@ def handle_messag(event):
             event.reply_token,
             TextSendMessage(text=content))
         return 0
+"""
    if event.message.text == "tran":
         content=tran()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
+"""
     if event.message.text == "beauty1":
         content=beauty()
         line_bot_api.reply_message(
