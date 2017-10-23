@@ -27,8 +27,8 @@ soup= BeautifulSoup(html, 'html.parser')
 all_=[]
 for i in soup.find_all(class_="touch_table"):
     t=u"車次"
-    trainnumber=t+i.find(class_="column1").text
-    print(trainnumber)
+    trainnumber=i.find(class_="column1").text
+    print(type(trainnumber))
    # all_.append(trainnumber)
     start=u"出發時間"+i.find(class_="column3").text
     print(start)

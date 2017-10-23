@@ -159,13 +159,13 @@ def tran():
     content=''
     for i in soup.find_all(class_="touch_table"):
         t=u"車次"
-        trainnumber=t+i.find(colass_="column1")
+        trainnumber=t+str(i.find(colass_="column1"))
         print(trainnumber)
    # all_.append(trainnumber)
-        start=u"出發時間"+i.find(class_="column3")
+        start=u"出發時間"+str(i.find(class_="column3"))
         print(start)
   #  all_.append(start)
-        arrive=u"到達時間"+i.find(class_="column4")
+        arrive=u"到達時間"+str(i.find(class_="column4"))
         print(arrive)
    # all_.append(arrive)
         data='{}\n{}\n{}\n{}\n\n'.format(trainnumber,start,arrive)
