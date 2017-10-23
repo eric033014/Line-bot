@@ -134,7 +134,7 @@ def beauty():
     print(content)
     return content
 
-"""
+
 def tran():
     target_url = 'http://www.thsrc.com.tw/tw/TimeTable/SearchResult'
     print("highway station ing ")
@@ -169,31 +169,9 @@ def tran():
    # all_.append(arrive)
         data='{}\n{}\n{}\n{}\n\n'.format(trainnumber,start,arrive)
         content+=data
-        #all_.append({u"車次":trainnumber,u"起站":start,u"終點":arrive})
-    #print(all_)
-
-
-
-
- 
-    rs=requests.session()
-    res=rs.get(target_url,verify=False)
-    soup=BeautifulSoup(res.text,'html.parser')
-    content=''
-    for i in soup.find_all(class_="r-ent"):
-        #title=i.text.encode('utf-8')
-        #print(i.text)
-        if i.find('a'):
-            title=i.find(class_="title").text.strip()
-            link = 'https://www.ptt.cc'+i.find('a')['href']
-
-            data = '{}\n{}\n\n'.format(title,link)
-            content+=data
-            print(data)
-    print(content)
+       
     return content
 
-"""
 
 def ptt_beauty():
     rs = requests.session()
@@ -256,6 +234,13 @@ def handle_messag(event):
             event.reply_token,
             TextSendMessage(text=content))
         return 0
+    if event.message.text == "t":
+        content=tran()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+
     if event.message.text == "beauty1":
         content=beauty()
         line_bot_api.reply_message(
