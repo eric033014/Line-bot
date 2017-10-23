@@ -137,7 +137,7 @@ def beauty():
 
 
 def tran():
-    target_url = 'http://www.thsrc.com.tw/tw/TimeTable/SearchResult'
+    url = 'http://www.thsrc.com.tw/tw/TimeTable/SearchResult'
     print("highway station ing ")
     request= urllib.request.Request(url)
     request.add_header("User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36")
