@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 url = "http://www.thsrc.com.tw/tw/TimeTable/SearchResult"
 request = urllib.request.Request(url) 
 request.add_header("User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36")
-
+test="XXX 12:00"
 form_data = {
     "StartStation": "977abb69-413a-4ccf-a109-0272c24fd490", 
     "EndStation": "f2519629-5973-4d08-913b-479cce78a356",
@@ -19,12 +19,15 @@ form_data = {
     "RestTime":"",
     "EarlyOrLater":""
 }
+test=test.strip().split()
+print(test[1])
 print(form_data["StartStation"])
 form_data = urllib.parse.urlencode(form_data).encode("utf-8")
 response = urllib.request.urlopen(request,data=form_data)  
 html = response.read()
 soup= BeautifulSoup(html, 'html.parser')
 all_=[]
+
 for i in soup.find_all(class_="touch_table"):
     t=u"車次"
     trainnumber=i.find(class_="column1").text

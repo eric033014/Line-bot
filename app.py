@@ -136,7 +136,7 @@ def beauty():
     return content
 
 
-def tran():
+def tran(str date,str time):
     url = 'http://www.thsrc.com.tw/tw/TimeTable/SearchResult'
     print("highway station ing ")
     request= urllib.request.Request(url)
@@ -144,9 +144,9 @@ def tran():
 
     form_data = {
         "StartStation": "977abb69-413a-4ccf-a109-0272c24fd490", 
-        "EndStation": "f2519629-5973-4d08-913b-479cce78a356",
-        "SearchDate": "2017/10/24",
-        "SearchTime": "17:00",
+        "EndStation": "fbd828d8-b1da-4b06-a3bd-680cdca4d2cd",
+        "SearchDate": date,
+        "SearchTime": time,
         "SearchWay":"DepartureInMandarin",
         "RestTime":"",
         "EarlyOrLater":""
@@ -223,10 +223,10 @@ def handle_messag(event):
         line_bot_api.reply_message(
             event.reply_token, image_message)
         return 0
-    if event.message.text == "eric":
-        content = "XXXXXXXXXXXXXXXXXXXXXXXXX"
-        handle_messag(event)
-
+    if "高鐵" in event.message.text :
+        t=event.message.text
+        t=t.split().strip()
+        content=tran(t[1],t[2])
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
