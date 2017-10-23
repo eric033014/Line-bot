@@ -171,6 +171,7 @@ def tran():
         #data='{}\n{}\n{}\n{}\n\n'.format(trainnumber,start,arrive)
         data=trainnumber+start+arrive
         content+=data
+        break;
        
     return content
 
