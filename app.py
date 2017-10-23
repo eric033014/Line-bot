@@ -136,7 +136,7 @@ def beauty():
     return content
 
 
-def tran(str date,str time):
+def tran(date,time):
     url = 'http://www.thsrc.com.tw/tw/TimeTable/SearchResult'
     print("highway station ing ")
     request= urllib.request.Request(url)
