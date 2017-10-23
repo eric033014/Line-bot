@@ -152,7 +152,7 @@ def tran():
         "EarlyOrLater":""
     }
     print(form_data["StartStation"])
-    form_data = urllib.urlencode(form_data).encode("utf-8")
+    form_data = urllib.parse.urlencode(form_data).encode("utf-8")
     response = urllib.request.urlopen(request,data=form_data)  
     html = response.read()
     soup= BeautifulSoup(html, 'html.parser')
