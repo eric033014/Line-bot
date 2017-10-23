@@ -131,6 +131,62 @@ def beauty():
     print(content)
     return content
 
+def tran():
+    target_url = 'http://www.thsrc.com.tw/tw/TimeTable/SearchResult'
+    print("highway station ing ")
+    request= urllib2.Request(url)
+    request.add_header("User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36")
+
+    form_data = {
+        "StartStation": "977abb69-413a-4ccf-a109-0272c24fd490", 
+        "EndStation": "f2519629-5973-4d08-913b-479cce78a356",
+        "SearchDate": "2017/10/24",
+        "SearchTime": "17:00",
+        "SearchWay":"DepartureInMandarin",
+        "RestTime":"",
+        "EarlyOrLater":""
+    }
+    print(form_data["StartStation"])
+    form_data = urllib.urlencode(form_data)
+    response = urllib2.urlopen(request,data=form_data)  
+    html = response.read()
+    soup= BeautifulSoup(html, 'html.parser')
+    content=''
+    for i in soup.find_all(class_="touch_table"):
+        t=u"車次"
+        trainnumber=t+i.find(class_="column1").text
+        print(trainnumber)
+   # all_.append(trainnumber)
+        start=u"出發時間"+i.find(class_="column3").text
+        print(start)
+  #  all_.append(start)
+        arrive=u"到達時間"+i.find(class_="column4").text
+        print(arrive)
+   # all_.append(arrive)
+        data='{}\n{}\n{}\n{}\n\n'.format(trainnumber,start,arrive)
+        content+=data
+        #all_.append({u"車次":trainnumber,u"起站":start,u"終點":arrive})
+    #print(all_)
+ 
+  """  rs=requests.session()
+    res=rs.get(target_url,verify=False)
+    soup=BeautifulSoup(res.text,'html.parser')
+    content=''
+    for i in soup.find_all(class_="r-ent"):
+        #title=i.text.encode('utf-8')
+        #print(i.text)
+        if i.find('a'):
+            title=i.find(class_="title").text.strip()
+            link = 'https://www.ptt.cc'+i.find('a')['href']
+
+            data = '{}\n{}\n\n'.format(title,link)
+            content+=data
+            print(data)
+    print(content)
+"""
+    return content
+
+
 def ptt_beauty():
     rs = requests.session()
     res = rs.get('https://www.ptt.cc/bbs/Beauty/index.html', verify=False)
@@ -188,6 +244,12 @@ def handle_messag(event):
         return 0
     if event.message.text == "beauty":
         content=ptt_beauty()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+   if event.message.text == "tran":
+        content=tran()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
