@@ -3,6 +3,7 @@ import requests
 import re
 import random
 import configparser
+import urllib,urllib2
 from bs4 import BeautifulSoup
 from flask import Flask, request, abort
 
