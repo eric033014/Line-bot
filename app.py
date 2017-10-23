@@ -162,14 +162,14 @@ def tran():
         trainnumber="車次"+str(i.find(class_="column1").text)
         print(trainnumber)
    # all_.append(trainnumber)
-        start=u"出發時間"+str(i.find(class_="column3"))
+        start=u"出發時間"+str(i.find(class_="column3").text)
         print(start)
   #  all_.append(start)
-        arrive=u"到達時間"+str(i.find(class_="column4"))
+        arrive=u"到達時間"+str(i.find(class_="column4").text)
         print(arrive)
    # all_.append(arrive)
         #data='{}\n{}\n{}\n{}\n\n'.format(trainnumber,start,arrive)
-        data=trainnumber+start+arrive
+        data=trainnumber+" "+start+" "+arrive+"\n"
         content+=data
         break;
        
