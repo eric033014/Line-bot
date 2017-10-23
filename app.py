@@ -256,14 +256,6 @@ def handle_messag(event):
             event.reply_token,
             TextSendMessage(text=content))
         return 0
-"""
-   if event.message.text == "tran":
-        content=tran()
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=content))
-        return 0
-"""
     if event.message.text == "beauty1":
         content=beauty()
         line_bot_api.reply_message(
